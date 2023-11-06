@@ -58,7 +58,7 @@ jobs:
       - name: Provision the magma-dev VM
         run: |
           cd lte/gateway
-          export MAGMA_DEV_CPUS=2
+          #export MAGMA_DEV_CPUS=2
           export MAGMA_DEV_MEMORY_MB=9216
           fab provision-magma-dev-vm
       - name: Run the sudo python tests
