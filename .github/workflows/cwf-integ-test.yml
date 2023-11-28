@@ -38,12 +38,14 @@ jobs:
         run: |
           mkdir images
           cd images
+          docker images
           docker save cwf_gateway_sessiond:latest | gzip > cwf_gateway_sessiond.tar.gz
           docker save cwf_nginx:latest  | gzip > cwf_nginx.tar.gz
           docker save cwf_gateway_python:latest | gzip > cwf_gateway_python.tar.gz
           docker save cwf_cwag_go:latest  | gzip > cwf_cwag_go.tar.gz
           docker save cwf_gateway_go:latest | gzip > cwf_gateway_go.tar.gz
           docker save cwf_gateway_pipelined:latest | gzip > cwf_gateway_pipelined.tar.gz
+          du -h --max-depth=0 * | sort -hr
       - uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8 # pin@v3
         with:
           name: docker-images
